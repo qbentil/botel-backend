@@ -1,11 +1,12 @@
+import authRoute from './routes/auth.js'
 import dotenv from 'dotenv'
 import express from 'express'
-import mongoose from 'mongoose'
 import hotelsRoute from './routes/hotels.js'
+import mongoose from 'mongoose'
 import roomsRoute from './routes/rooms.js'
 import usersRoute from './routes/users.js'
-import authRoute from './routes/auth.js'
 
+const PORT = 8800;
 const APP = express();
 dotenv.config();
 
@@ -51,7 +52,7 @@ APP.use((err, req, res, next) => {
 
 
 
-APP.listen(8800, () =>{
+APP.listen(PORT, () =>{
     DBCONNECT();
-    console.log('Server is running on port 8800......');
+    console.log(`Server is running on port ${PORT}......`);
 })
