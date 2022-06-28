@@ -1,4 +1,5 @@
 import authRoute from './routes/auth.js'
+import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import express from 'express'
 import hotelsRoute from './routes/hotels.js'
@@ -29,6 +30,7 @@ mongoose.connection.on('disconnected', () => {
 
 // MIDDLEWARES
 APP.use(express.json());
+APP.use(cookieParser());
 APP.use('/api/hotels', hotelsRoute);
 APP.use('/api/rooms', roomsRoute);
 APP.use('/api/users', usersRoute);
@@ -54,5 +56,5 @@ APP.use((err, req, res, next) => {
 
 APP.listen(PORT, () =>{
     DBCONNECT();
-    console.log(`Server is running on port ${PORT}......`);
+    console.log(`Server is running on port ${PORT} 🚀...`);
 })
