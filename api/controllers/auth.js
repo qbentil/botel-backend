@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import { createError } from "../utils/error.js";
+import jwt from "jsonwebtoken";
 
 // register
 export const register = async (req, res, next) => {
@@ -29,6 +30,9 @@ export const login = async (req, res, next) => {
     if (!user) return next(createError("User not found", 404));
     if (!bcrypt.compareSync(req.body.password, user.password))
       return next(createError("Invalid username or password", 401));
+
+    //   Create a token
+    const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET);
 
     const { password, isAdmin, ...userData } = user._doc;
     res.status(201).json({ ...userData });
