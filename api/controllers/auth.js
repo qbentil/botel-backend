@@ -32,10 +32,16 @@ export const login = async (req, res, next) => {
       return next(createError("Invalid username or password", 401));
 
     //   Create a token
-    const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET);
+    const token = jwt.sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.JWT_SECRET
+    );
 
     const { password, isAdmin, ...userData } = user._doc;
-    res.status(201).json({ ...userData });
+    res
+      .cookie("access_token", token, { httpOnly: true })
+      .status(200)
+      .json({ ...userData });
   } catch (error) {
     next(error);
   }
