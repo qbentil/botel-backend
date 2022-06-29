@@ -55,7 +55,10 @@ export const updateroom = async (req, res, next) => {
           next(err);
         }
       }
-      res.status(200).json(deletedRoom);
+      res.status(200).json({
+        success: true,
+        message: "Room deleted successfully",        
+      });
     } catch (error) {
       next(error);
     }
