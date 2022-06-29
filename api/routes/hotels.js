@@ -1,4 +1,4 @@
-import { createHotel, deleteHotel, getHotelById, getHotels, updateHotel } from "../controllers/hotel.js";
+import { coutHotelsByCity, createHotel, deleteHotel, getHotelById, getHotels, getHotelsByCity, updateHotel } from "../controllers/hotel.js";
 
 import express from "express";
 import { verifyAdmin } from "../utils/verifyToken.js";
@@ -17,6 +17,12 @@ router.delete("/:id",verifyAdmin,  deleteHotel)
 router.get("/", getHotels)
 
 // HOTELS/:ID
-router.get("/:id", getHotelById)
+router.get("/find/:id", getHotelById)
+
+// HOTELS by city
+router.get("/findbycity", getHotelsByCity)
+
+// Count hotels by cities
+router.get("/countbycity", coutHotelsByCity)
 
 export default router;
