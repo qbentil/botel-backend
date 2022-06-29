@@ -53,3 +53,38 @@ export const getHotelById = async (req, res, next) => {
     next(error);
   }
 };
+
+// get hotels count by city
+export const getHotelsByCity = async (req, res, next) => {
+  const city = req.query.city
+  try {
+    // find hotel by city case insensitive
+    const hotels = await HOTEL.find({ city: { $regex: city, $options: "i" } });
+    res.status(200).json(hotels);
+  } catch (error) {
+    next(error);
+  }
+}
+
+//  count hotels by city
+export const coutHotelsByCity = async (req, res, next) => {
+  const cities = req.query.cities.split(",");
+  try {
+    // find hotel by city case insensitive
+    const countList = await HOTEL.aggregate([
+      // make city case insensitive
+      { $match: { city: { $in: cities } } },
+      // group by city
+      { $group: { _id: "$city", count: { $sum: 1 } } },
+      // sort by count
+      { $sort: { count: -1 } }
+      
+    ]);
+    res.status(200).json({
+      success: true,
+      count: countList
+    });
+  } catch (error) {
+    next(error);
+  }
+}
