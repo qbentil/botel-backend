@@ -20,13 +20,17 @@
 
 
 
->[Request Body](RequestBody)
+>*Request*
+
+```
 {
+
 	"name": "John Doe"
 	"username": "jdoe",
 	"email": "doe@test.com",
 	"password":"123456",
 }
+```
 
 ### `GET /v1/random/{number}`
 
