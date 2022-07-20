@@ -65,17 +65,17 @@ Returns a user with  _id `{id}`.
 `{id}` is optional. If not provided, an array of all users will be returned.
 ```
 {
-		"_id": string,
-		"username": string,
-		"email": string,
-		"password": string,
-		"name": string, 
-		"isAdmin": boolean,
-		"createdAt": string,
-		"updatedAt": string,
-        "address": string,
-        "phone": string,
-        "photoURL": string
+    "_id": string,
+    "username": string,
+    "email": string,
+    "password": string,
+    "name": string, 
+    "isAdmin": boolean,
+    "createdAt": string,
+    "updatedAt": string,
+    "address": string,
+    "phone": string,
+    "photoURL": string
 },
     
 ```
