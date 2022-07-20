@@ -20,7 +20,7 @@
 
 
 
->[](RequestBody)
+>[Request Body](RequestBody)
 {
 	"name": "John Doe"
 	"username": "jdoe",
