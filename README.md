@@ -18,8 +18,6 @@
 
 `POST /api/auth/register`
 
-
-
 >*Request Body*
 
 ```
@@ -79,5 +77,51 @@ Returns a user with  _id `{id}`.
 },
     
 ```
+### `USER LOGIN`
+`GET /api/auth/login`
 
+>*Request Body*
 
+```
+{
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+
+}
+
+```
+
+`RESPONSE`
+```
+SUCCESS:
+{
+    success: bollean,
+    status: number,
+    "token": string,
+    "user": {
+        "_id": string,
+        "username": string,
+        "email": string,
+        "password": string,
+        "name": string, 
+        "isAdmin": boolean,
+        "createdAt": string,
+        "updatedAt": string,
+        "address": string,
+        "phone": string,
+        "photoURL": string
+    }
+}
+ERROR:{
+    success: boolean,
+    status: number,
+    message: string,
+}
+```
