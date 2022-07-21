@@ -119,9 +119,11 @@ SUCCESS:
         "photoURL": string
     }
 }
+````
+````
 ERROR:{
     success: boolean,
     status: number,
     message: string,
 }
-```
+````
