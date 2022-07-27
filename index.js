@@ -7,9 +7,9 @@ import mongoose from 'mongoose'
 import roomsRoute from './routes/rooms.js'
 import usersRoute from './routes/users.js'
 
-const PORT = 8800;
-const APP = express();
 dotenv.config();
+const PORT = process.env.PORT || 3000;
+const APP = express();
 
 
 const DBCONNECT  = async () => {
