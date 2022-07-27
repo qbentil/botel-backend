@@ -31,10 +31,10 @@ mongoose.connection.on('disconnected', () => {
 // MIDDLEWARES
 APP.use(express.json());
 APP.use(cookieParser());
-APP.use('/api/hotels', hotelsRoute);
-APP.use('/api/rooms', roomsRoute);
-APP.use('/api/users', usersRoute);
-APP.use('/api/auth', authRoute);
+APP.use('/hotels', hotelsRoute);
+APP.use('/rooms', roomsRoute);
+APP.use('/users', usersRoute);
+APP.use('/auth', authRoute);
 
 // error handling MIDDLEWARE
 APP.use((err, req, res, next) => {
