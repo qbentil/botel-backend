@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const RoomSchema = new Schema({
-    title: {
+    name: {
         type: String,
         required: true,
     },
@@ -15,11 +15,18 @@ const RoomSchema = new Schema({
         type: String,
         required: true
     },
+    image: {
+        type: String,
+        required: true
+    },
     maxPeople: {
         type: Number,
         required: true
     },
-    roomNumbers: [{number: Number, unavailableDates: {type: [Date], default: []}}],
+    roomNumber: {
+        type: Number,
+        required: true
+    },
 }, { timestamps: true });
 
 export default mongoose.models['Room'] || mongoose.model('Room', RoomSchema);
