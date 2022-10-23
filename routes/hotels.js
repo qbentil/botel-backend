@@ -5,13 +5,14 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
+// Remove verifyAdmin middleware to test
 // CREATE
-router.post("/", verifyAdmin, createHotel);
+router.post("/",  createHotel);
 
 // UPDATE
-router.put("/:id", verifyAdmin,  updateHotel);
+router.put("/:id",   updateHotel);
 // DELETE
-router.delete("/:id",verifyAdmin,  deleteHotel)
+router.delete("/:id",  deleteHotel)
 
 // HOTELS
 router.get("/", getHotels)

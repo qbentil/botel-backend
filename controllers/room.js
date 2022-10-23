@@ -2,19 +2,16 @@ import HOTEL from "../models/Hotel.js";
 import ROOM from "../models/Room.js";
 
 export const createRoom = async (req, res, next) => {
-  const { title, price, desc, maxPeople, roomNumbers } = req.body;
-  const room = new ROOM({
-    title,
-    price,
-    desc,
-    maxPeople,
-    roomNumbers,
-  });
+  const { hotelId } = req.params;
+  const {name, price, desc, image, maxPeople, roomNumber, status} = req.body;
   try {
+    const room = new ROOM({
+      name, price, desc, image, maxPeople, roomNumber, status 
+    });
     await room.save();
     // push room id to hotel rooms array
     try {
-      await HOTEL.findByIdAndUpdate(req.params.hotelId, {
+      await HOTEL.findByIdAndUpdate(hotelId, {
         $push: { rooms: room._id },
       });
     } catch (err) {

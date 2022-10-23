@@ -12,32 +12,21 @@ const HotelSchema = new Schema({
         min: 0,
         max: 5,
     },
-    type: {
-        type: String,
-        required: true
-    },
     city: {
         type: String,
         required: true
     },
-    photos: {
-        type: [String],
-
-    },
-    address: {
+    photo: {
         type: String,
         required: true
     },
-    distance: {
-        type: Number,
+    country: {
+        type: String,
+        required: true
     },
     featured: {
         type: Boolean,
         default: false
-    },
-    title:{
-        type: String,
-        required: true
     },
     rooms:{
         type: [{
@@ -45,8 +34,9 @@ const HotelSchema = new Schema({
             ref: 'Room'
         }]
     },
-    cheapestPrice: {
-        type: Number,
+    status: {
+        type: String,
+        enum: ['Available', 'Unavailable'],
         required: true
     }
 })
