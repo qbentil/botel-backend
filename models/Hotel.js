@@ -36,7 +36,7 @@ const HotelSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ['available', 'unavailable'],
+        enum: ['Available', 'Unavailable'],
         required: true
     }
 })

@@ -8,10 +8,11 @@ const router = express.Router();
 // CREATE
 router.post("/:hotelId", createRoom);
 
+// remove verifyAdmin middleware to test
 // UPDATE
-router.put("/:id", verifyAdmin, updateroom);
+router.put("/:id",  updateroom);
 // DELETE
-router.delete("/:id/:hotelId", verifyAdmin, deleteRoom)
+router.delete("/:id/:hotelId",  deleteRoom)
 
 // Rooms
 router.get("/", getRooms)

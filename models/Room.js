@@ -5,32 +5,32 @@ const { Schema } = mongoose;
 const RoomSchema = new Schema({
     name: {
         type: String,
-        required: true,
+        required: [true, 'Please add a name'],
     },
     price: {
         type: Number,
-        required: true,
+        required: [true, 'Please add a price'],
     },
     desc: {
         type: String,
-        required: true
+        required: [true, 'Please add a description'],
     },
     image: {
         type: String,
-        required: true
+        required: [true, 'Please provide an image']
     },
     maxPeople: {
         type: Number,
-        required: true
+        required: [true, 'Please enter the maximum number of people'],
     },
     roomNumber: {
-        type: Number,
-        required: true
+        type: String,
+        required: [true, 'Please enter the room number'],
     },
     status: {
         type: String,
-        enum: ['available', 'unavailable'],
-        required: true
+        enum: ['Available', 'Unavailable'],
+        required: [true, 'Please enter the room status'],	
     }
 }, { timestamps: true });
 
