@@ -27,6 +27,11 @@ const RoomSchema = new Schema({
         type: Number,
         required: true
     },
+    status: {
+        type: String,
+        enum: ['available', 'unavailable'],
+        required: true
+    }
 }, { timestamps: true });
 
 export default mongoose.models['Room'] || mongoose.model('Room', RoomSchema);
