@@ -11,7 +11,7 @@ import usersRoute from './routes/users.js'
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 const APP = express();
-app.use(cors({credentials: true, origin:true}));
+APP.use(cors({credentials: true, origin:true}));
 
 
 // MIDDLEWARES
