@@ -39,6 +39,8 @@ const HotelSchema = new Schema({
         enum: ['Available', 'Unavailable'],
         required: true
     }
+}, {
+    timestamps: true
 })
 
 export default mongoose.models['Hotel'] || mongoose.model('Hotel', HotelSchema);
