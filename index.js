@@ -1,32 +1,18 @@
+import DBCONNECT from './database/index.js'
 import authRoute from './routes/auth.js'
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
 import hotelsRoute from './routes/hotels.js'
-import mongoose from 'mongoose'
 import roomsRoute from './routes/rooms.js'
 import usersRoute from './routes/users.js'
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 const APP = express();
+app.use(cors({credentials: true, origin:true}));
 
-
-const DBCONNECT  = async () => {
-    try {
-        await mongoose.connect(process.env.MONGODB);
-        // console.log('DB Connected');
-      } catch (error) {
-        console.log(error);
-      }
-}
-
-mongoose.connection.on('connected', () => {
-    console.log('MongoDB Connected');
-})
-mongoose.connection.on('disconnected', () => {
-    console.log('MongoDB Disconnected');
-})
 
 // MIDDLEWARES
 APP.use(express.json());
