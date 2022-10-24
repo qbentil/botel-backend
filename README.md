@@ -1,14 +1,10 @@
 
-![](game-of-thrones-quotes-api_header.png)
-
 # iBookings Online Hotel Bookings API
-
-
 
 ## Production host
 
 *Yet to Deploy💡*
-<!-- 🆕 []() -->
+🆕 [](https://ibookings-api.herokuapp.com/)
 
 
 ## API USAGE
