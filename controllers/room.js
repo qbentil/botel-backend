@@ -17,7 +17,11 @@ export const createRoom = async (req, res, next) => {
     } catch (err) {
       next(err);
     }
-    res.status(201).json(room);
+    res.status(201).json({
+      success: true,
+      data: room,
+      message: "Room created successfully",
+    });
   } catch (error) {
     next(error);
   }
@@ -32,7 +36,11 @@ export const updateroom = async (req, res, next) => {
         { $set: req.body },
         { new: true }
       );
-      res.status(200).json(updatedroom);
+      res.status(200).json({
+        success: true,
+        data: updatedroom,
+        message: "room updated successfully",
+      });
     } catch (error) {
       next(error);
     }
@@ -54,7 +62,9 @@ export const updateroom = async (req, res, next) => {
       }
       res.status(200).json({
         success: true,
-        message: "Room deleted successfully",        
+        data: deletedRoom,
+        message: "Room deleted successfully",  
+              
       });
     } catch (error) {
       next(error);
@@ -65,7 +75,11 @@ export const updateroom = async (req, res, next) => {
   export const getRooms = async (req, res, next) => {
     try {
       const rooms = await ROOM.find();
-      res.status(200).json(rooms);
+      res.status(200).json({
+        success: true,
+        data: rooms,
+        message: "Rooms fetch success"
+      });
     } catch (error) {
       next(error);
     }
@@ -75,7 +89,11 @@ export const updateroom = async (req, res, next) => {
   export const getRoomById = async (req, res, next) => {
     try {
       const room = await ROOM.findById(req.params.id);
-      res.status(200).json(room);
+      res.status(200).json({
+        success: true,
+        data: room,
+        message: "Room fetch success"
+      });
     } catch (error) {
       next(error);
     }
