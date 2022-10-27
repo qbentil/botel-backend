@@ -12,15 +12,25 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const APP = express();
 APP.use(cors({credentials: true, origin:true}));
+// set access-control-allow-origin header
+const headers = (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+    next();
+};
 
 
 // MIDDLEWARES
 APP.use(express.json());
 APP.use(cookieParser());
-APP.use('/hotels', hotelsRoute);
-APP.use('/rooms', roomsRoute);
-APP.use('/users', usersRoute);
-APP.use('/auth', authRoute);
+APP.use('/hotels', headers, hotelsRoute);
+APP.use('/rooms', headers, roomsRoute);
+APP.use('/users', headers, usersRoute);
+APP.use('/auth', headers, authRoute);
 
 // error handling MIDDLEWARE
 APP.use((err, req, res, next) => {
